@@ -1,0 +1,106 @@
+2024-09-01 16:29:12,218 - database - database_operator.py[line:32] - INFO: 开始创建数据库
+2024-09-01 16:29:12,243 - database - database_operator.py[line:34] - INFO: 创建数据库完成
+2024-09-01 16:36:41,486 - database - database_operator.py[line:22] - INFO: 开始创建数据库
+2024-09-01 16:37:04,391 - database - database_operator.py[line:22] - INFO: 开始创建数据库
+2024-09-01 16:37:20,744 - database - database_operator.py[line:22] - INFO: 开始创建数据库
+2024-09-01 16:37:20,968 - database - database_operator.py[line:24] - INFO: 创建数据库完成
+2024-09-01 16:55:37,856 - database - database_operator.py[line:19] - INFO: 开始创建数据库
+2024-09-01 16:55:37,896 - database - database_operator.py[line:21] - INFO: 创建数据库完成
+2024-09-01 16:58:04,252 - database - database_operator.py[line:19] - INFO: 开始创建数据库
+2024-09-01 16:58:04,252 - database - database_operator.py[line:21] - INFO: 创建数据库完成
+2024-09-01 17:04:25,817 - database - database_operator.py[line:19] - INFO: 开始创建数据库
+2024-09-01 17:04:25,821 - database - database_operator.py[line:21] - INFO: 创建数据库完成
+2024-09-01 17:04:30,280 - database - session.py[line:29] - ERROR: 操作数据库出错:(builtins.AttributeError) 'str' object has no attribute 'hex'
+[SQL: INSERT INTO "Task" (name, parent_task_id, id, create_time, update_time, create_by, update_by) VALUES (?, ?, ?, ?, ?, ?, ?)]
+[parameters: [{'name': '测试任务', 'create_by': '', 'parent_task_id': '', 'id': UUID('5bf711dc-6e76-4956-b03a-e46cf957ea4e'), 'update_by': None}]]
+2024-09-01 17:07:51,080 - database - database_operator.py[line:19] - INFO: 开始创建数据库
+2024-09-01 17:07:51,096 - database - database_operator.py[line:21] - INFO: 创建数据库完成
+2024-09-01 17:07:58,621 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:
+2024-09-01 17:07:58,623 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:
+2024-09-01 17:08:41,545 - database - database_operator.py[line:19] - INFO: 开始创建数据库
+2024-09-01 17:08:41,545 - database - database_operator.py[line:21] - INFO: 创建数据库完成
+2024-09-01 17:08:59,376 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:
+2024-09-01 17:08:59,377 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:
+2024-09-01 17:09:40,651 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:c693ff1537a04058b3ac006a2a3ea2a3
+2024-09-01 17:09:40,651 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:
+2024-09-01 19:04:36,626 - database - database_operator.py[line:19] - INFO: 开始创建数据库
+2024-09-01 19:04:36,626 - database - database_operator.py[line:21] - INFO: 创建数据库完成
+2024-09-01 19:05:33,936 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:c693ff1537a04058b3ac006a2a3ea2a3
+2024-09-01 19:05:33,938 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:None
+2024-09-01 19:05:33,938 - database - session.py[line:29] - ERROR: 操作数据库出错:list_child_task() got multiple values for argument 'session'
+2024-09-01 19:05:33,940 - database - session.py[line:29] - ERROR: 操作数据库出错:list_child_task() got multiple values for argument 'session'
+2024-09-01 19:05:54,242 - database - database_operator.py[line:19] - INFO: 开始创建数据库
+2024-09-01 19:05:54,242 - database - database_operator.py[line:21] - INFO: 创建数据库完成
+2024-09-01 19:05:57,352 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:c693ff1537a04058b3ac006a2a3ea2a3
+2024-09-01 19:05:57,353 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:None
+2024-09-01 19:05:57,361 - database - session.py[line:29] - ERROR: 操作数据库出错:'TaskModel' object is not iterable
+2024-09-01 19:05:57,362 - database - session.py[line:29] - ERROR: 操作数据库出错:'TaskModel' object is not iterable
+2024-09-01 19:08:13,146 - database - database_operator.py[line:19] - INFO: 开始创建数据库
+2024-09-01 19:08:13,150 - database - database_operator.py[line:21] - INFO: 创建数据库完成
+2024-09-01 19:08:18,445 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:c693ff1537a04058b3ac006a2a3ea2a3
+2024-09-01 19:08:18,446 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:None
+2024-09-01 19:08:18,446 - database - session.py[line:29] - ERROR: 操作数据库出错:list_child_task() got multiple values for argument 'session'
+2024-09-01 19:08:18,446 - database - session.py[line:29] - ERROR: 操作数据库出错:list_child_task() got multiple values for argument 'session'
+2024-09-01 19:08:18,446 - database - session.py[line:29] - ERROR: 操作数据库出错:list_child_task() got multiple values for argument 'session'
+2024-09-01 19:08:38,984 - database - database_operator.py[line:19] - INFO: 开始创建数据库
+2024-09-01 19:08:38,984 - database - database_operator.py[line:21] - INFO: 创建数据库完成
+2024-09-01 19:08:40,045 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:c693ff1537a04058b3ac006a2a3ea2a3
+2024-09-01 19:08:40,046 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:None
+2024-09-01 19:09:15,588 - database - database_operator.py[line:19] - INFO: 开始创建数据库
+2024-09-01 19:09:15,592 - database - database_operator.py[line:21] - INFO: 创建数据库完成
+2024-09-01 19:09:16,746 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:c693ff1537a04058b3ac006a2a3ea2a3
+2024-09-01 19:09:16,747 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:None
+2024-09-01 19:11:54,359 - database - database_operator.py[line:19] - INFO: 开始创建数据库
+2024-09-01 19:11:54,359 - database - database_operator.py[line:21] - INFO: 创建数据库完成
+2024-09-01 19:11:57,794 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:c693ff1537a04058b3ac006a2a3ea2a3
+2024-09-01 19:11:57,795 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:None
+2024-09-01 19:15:54,047 - database - database_operator.py[line:19] - INFO: 开始创建数据库
+2024-09-01 19:15:54,047 - database - database_operator.py[line:21] - INFO: 创建数据库完成
+2024-09-01 19:16:24,119 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:
+2024-09-01 19:16:24,120 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:
+2024-09-01 19:16:24,124 - database - session.py[line:29] - ERROR: 操作数据库出错:Foreign key associated with column 'Task.parent_task_id' could not find table 'BaseModel' with which to generate a foreign key to target column 'id'
+2024-09-01 19:20:55,034 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:c693ff1537a04058b3ac006a2a3ea2a3
+2024-09-01 19:20:55,035 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:
+2024-09-01 19:20:55,036 - database - session.py[line:29] - ERROR: 操作数据库出错:Foreign key associated with column 'Task.parent_task_id' could not find table 'BaseModel' with which to generate a foreign key to target column 'id'
+2024-09-01 19:21:12,523 - database - database_operator.py[line:19] - INFO: 开始创建数据库
+2024-09-01 19:21:12,526 - database - database_operator.py[line:21] - INFO: 创建数据库完成
+2024-09-01 19:21:18,175 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:
+2024-09-01 19:21:18,176 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:
+2024-09-01 19:21:18,180 - database - session.py[line:29] - ERROR: 操作数据库出错:Foreign key associated with column 'Task.parent_task_id' could not find table 'TaskModel' with which to generate a foreign key to target column 'id'
+2024-09-01 19:21:27,297 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:c693ff1537a04058b3ac006a2a3ea2a3
+2024-09-01 19:21:27,298 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:
+2024-09-01 19:21:27,299 - database - session.py[line:29] - ERROR: 操作数据库出错:Foreign key associated with column 'Task.parent_task_id' could not find table 'TaskModel' with which to generate a foreign key to target column 'id'
+2024-09-01 19:22:30,716 - database - database_operator.py[line:19] - INFO: 开始创建数据库
+2024-09-01 19:22:30,720 - database - database_operator.py[line:21] - INFO: 创建数据库完成
+2024-09-01 19:22:32,688 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:c693ff1537a04058b3ac006a2a3ea2a3
+2024-09-01 19:22:32,689 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:
+2024-09-01 19:22:40,747 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:c693ff1537a04058b3ac006a2a3ea2a3
+2024-09-01 19:22:40,747 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:None
+2024-09-01 19:22:58,010 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:
+2024-09-01 19:22:58,011 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:
+2024-09-01 19:23:22,194 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:
+2024-09-01 19:23:22,195 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:
+2024-09-01 19:23:22,197 - database - session.py[line:29] - ERROR: 操作数据库出错:(sqlite3.IntegrityError) UNIQUE constraint failed: Task.name
+[SQL: INSERT INTO "Task" (name, parent_task_id, id, create_time, update_time, create_by, update_by) VALUES (?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('测试任务-根节点2', None, '5160956529f84ec2b098e1470849836b', '2024-09-01 19:23:22.196736', '2024-09-01 19:23:22.196736', None, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-09-01 19:23:41,781 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:
+2024-09-01 19:23:41,782 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:
+2024-09-01 19:25:00,304 - database - database_operator.py[line:19] - INFO: 开始创建数据库
+2024-09-01 19:25:00,308 - database - database_operator.py[line:21] - INFO: 创建数据库完成
+2024-09-01 19:25:10,587 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:
+2024-09-01 19:25:10,588 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:
+2024-09-01 19:26:16,225 - database - database_operator.py[line:19] - INFO: 开始创建数据库
+2024-09-01 19:26:16,228 - database - database_operator.py[line:21] - INFO: 创建数据库完成
+2024-09-01 19:26:26,161 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:
+2024-09-01 19:26:26,163 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:
+2024-09-01 19:26:31,962 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:c693ff1537a04058b3ac006a2a3ea2a3
+2024-09-01 19:26:31,963 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:None
+2024-09-01 19:40:12,702 - database - database_operator.py[line:19] - INFO: 开始创建数据库
+2024-09-01 19:40:12,705 - database - database_operator.py[line:21] - INFO: 创建数据库完成
+2024-09-01 19:41:08,032 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:3c30a5cd406e4ea0b90ee28b34a2cc7b
+2024-09-01 19:42:52,677 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:63b669e026dd4b7f9c6b466234abdef8
+2024-09-01 19:42:52,677 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:c693ff1537a04058b3ac006a2a3ea2a3
+2024-09-01 19:44:53,763 - database - database_operator.py[line:39] - INFO: 对uuid进行操作:c693ff1537a04058b3ac006a2a3ea2a3
+2024-09-01 21:54:50,714 - database - database_operator.py[line:19] - INFO: 开始创建数据库
+2024-09-01 21:54:50,717 - database - database_operator.py[line:21] - INFO: 创建数据库完成
