@@ -1,6 +1,6 @@
 """database model to manage task"""
 
-from sqlalchemy import Column, String, ForeignKey
+from sqlalchemy import Column, String, ForeignKey, Intenger
 from sqlalchemy.dialects.postgresql import UUID
 
 from .base_model import BaseModel
@@ -24,3 +24,5 @@ class TaskModel(BaseModel, Base):
         default=None,
         comment="parent task id",
     )
+
+    order = Column(Intenger(), default=0, comment="task order start from 0")
