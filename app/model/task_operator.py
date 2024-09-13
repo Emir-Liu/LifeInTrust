@@ -47,10 +47,20 @@ def tree_task(
     task_id: UUID,
     user_id: Optional[UUID] = None,
 ) -> dict:
-    root_task = session.query(TaskModel).filter(TaskModel.id == task_id).first()
-    task_tree = root_task.__dict__
-    task_tree["child_task"] = list_child_task(task_id=task_id)
-    return task_tree
+    logger.info("task id:%s", task_id)
+    if task_id:
+
+        root_task = session.query(TaskModel).filter(TaskModel.id == task_id).first()
+        task_tree = root_task.__dict__
+        task_tree["child_task"] = list_child_task(task_id=task_id)
+        return task_tree
+    else:
+        root_task = (
+            session.query(TaskModel).filter(TaskModel.parent_task_id == None).first()
+        )
+        task_tree = root_task.__dict__
+        task_tree["child_task"] = list_child_task(task_id=root_task.id)
+        return task_tree
 
 
 @with_session
@@ -90,3 +100,10 @@ def update_task(
         tmp_task_data.parent_task_id = parent_task_id
 
     return tmp_task_data.__dict__
+
+
+@with_session
+def add_task_root(
+    session: Session,
+):
+    add_task(task_name="RootTask")

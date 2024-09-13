@@ -15,7 +15,10 @@ router = APIRouter(prefix="/task", tags=["task"])
 
 @router.get("/add/")
 async def add_task(
-    task_name: str, parent_task_id: Optional[str] = None, user_id: Optional[str] = None
+    task_name: str,
+    parent_task_id: Optional[str] = None,
+    user_id: Optional[str] = None,
+    relation_type: Optional[str] = None,
 ):
     """add task api
 
@@ -53,15 +56,15 @@ async def list_task(task_id: str, user_id: Optional[str] = None):
     task_id = trans_str2uuid(task_id)
     user_id = trans_str2uuid(user_id)
 
-    if task_id is None and user_id is None:
-        tmp_ret_json = deepcopy(ret_json)
-        tmp_ret_json["msg"] = "no input"
-        tmp_ret_json["task_tree"] = {}
-    else:
-        task_tree = task_operator.tree_task(task_id=task_id, user_id=user_id)
-        tmp_ret_json = deepcopy(ret_json)
-        tmp_ret_json["msg"] = "list task success"
-        tmp_ret_json["task_tree"] = task_tree
+    # if task_id is None and user_id is None:
+    #     tmp_ret_json = deepcopy(ret_json)
+    #     tmp_ret_json["msg"] = "no input"
+    #     tmp_ret_json["task_tree"] = {}
+    # else:
+    task_tree = task_operator.tree_task(task_id=task_id, user_id=user_id)
+    tmp_ret_json = deepcopy(ret_json)
+    tmp_ret_json["msg"] = "list task success"
+    tmp_ret_json["task_tree"] = task_tree
 
     return tmp_ret_json
 
