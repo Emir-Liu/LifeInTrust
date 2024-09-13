@@ -9,7 +9,7 @@ from sqlalchemy.orm import Session
 from .session import with_session
 from .task_model import TaskModel
 
-from app.configs import LoggerOperation
+from app.configs import LoggerOperation, ROOT_TASK_NAME
 
 logger = LoggerOperation().get_logger("model")
 
@@ -33,6 +33,7 @@ def add_task(
 
     if task_id is None:
         task_id = uuid4()
+
     new_task_data = TaskModel(
         name=task_name, parent_task_id=parent_task_id, create_by=create_by, id=task_id
     )
@@ -64,7 +65,9 @@ def tree_task(
 
 
 @with_session
-def list_child_task(session: Session, task_id: UUID) -> List[dict]:
+def list_child_task(
+    session: Session, task_id: UUID, bool_recursion: bool = True
+) -> List[dict]:
     child_tasks = (
         session.query(TaskModel).filter(TaskModel.parent_task_id == task_id).all()
     )
@@ -72,7 +75,12 @@ def list_child_task(session: Session, task_id: UUID) -> List[dict]:
     child_task_list = []
     for tmp_child_task in child_tasks:
         tmp_child_task_list = tmp_child_task.__dict__
-        tmp_child_task_list["child_task"] = list_child_task(task_id=tmp_child_task.id)
+        if bool_recursion is True:
+            tmp_child_task_list["child_task"] = list_child_task(
+                task_id=tmp_child_task.id
+            )
+        else:
+            pass
         child_task_list.append(tmp_child_task_list)
     return child_task_list
 
@@ -106,4 +114,15 @@ def update_task(
 def add_task_root(
     session: Session,
 ):
-    add_task(task_name="RootTask")
+    add_task(task_name=ROOT_TASK_NAME)
+
+
+@with_session
+def get_taskid_by_name(
+    session: Session,
+    task_name: str,
+):
+    task_info = session.query(TaskModel).filter(TaskModel.name == task_name).first()
+    if task_info:
+        return task_info.id
+    return None

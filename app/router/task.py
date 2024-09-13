@@ -7,6 +7,7 @@ from typing import Optional
 from .util import logger
 from app.model import task_operator
 from app.model.database_operator import trans_str2uuid
+from app.configs import ROOT_TASK_NAME
 
 from .util import ret_json
 
@@ -56,11 +57,14 @@ async def list_task(task_id: str, user_id: Optional[str] = None):
     task_id = trans_str2uuid(task_id)
     user_id = trans_str2uuid(user_id)
 
-    # if task_id is None and user_id is None:
-    #     tmp_ret_json = deepcopy(ret_json)
-    #     tmp_ret_json["msg"] = "no input"
-    #     tmp_ret_json["task_tree"] = {}
-    # else:
+    if task_id is None:
+        # tmp_ret_json = deepcopy(ret_json)
+        # tmp_ret_json["msg"] = "no input"
+        # tmp_ret_json["task_tree"] = {}
+        task_id = task_operator.get_taskid_by_name(task_name=ROOT_TASK_NAME)
+    else:
+        pass
+
     task_tree = task_operator.tree_task(task_id=task_id, user_id=user_id)
     tmp_ret_json = deepcopy(ret_json)
     tmp_ret_json["msg"] = "list task success"
