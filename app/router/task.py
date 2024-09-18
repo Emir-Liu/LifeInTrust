@@ -89,6 +89,7 @@ async def update_task(
     tmp_ret_json = deepcopy(ret_json)
     tmp_ret_json["msg"] = "update task success"
     tmp_ret_json["new_task_info"] = new_task
+    logger.info("ret:%s", tmp_ret_json)
     return tmp_ret_json
 
 
