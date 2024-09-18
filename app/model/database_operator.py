@@ -5,6 +5,7 @@ import uuid
 from uuid import UUID
 from typing import Optional, Union
 from .task_model import TaskModel  # noqa
+from .task_operator import add_task_root
 from .connector import Base, engine
 
 # 需要注意的是必须在这里增加对应的模型，否则对应的数据模型无法加载
@@ -18,6 +19,14 @@ class DatabaseOperator:
         """创建数据库"""
         logger.info("开始创建数据库")
         Base.metadata.create_all(bind=engine)
+
+        # 创建任务根节点
+        try:
+            logger.info("创建初始任务根节点")
+            add_task_root()
+        except Exception as e:
+            logger.info("任务根节点已经存在")
+
         logger.info("创建数据库完成")
 
     def drop_database(self):
