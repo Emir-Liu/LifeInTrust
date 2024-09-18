@@ -23,6 +23,7 @@ def add_task(
     task_id: Optional[UUID] = None,
     parent_task_id: Optional[UUID] = None,
     create_by: Optional[UUID] = None,
+    order: int = -1,
 ) -> UUID:
     """add task
 
@@ -36,8 +37,27 @@ def add_task(
     if task_id is None:
         task_id = uuid4()
 
+    # change order
+    tmp_task_list = (
+        session.query(TaskModel)
+        .filter(
+            TaskModel.parent_task_id == parent_task_id, TaskModel.create_by == create_by
+        )
+        .order_by(TaskModel.order)
+        .all()
+    )
+    if order == -1 or order >= len(tmp_task_list):
+        order = len(tmp_task_list)
+    else:
+        for tmp_task in tmp_task_list:
+            if tmp_task.order >= order:
+                tmp_task.order += 1
     new_task_data = TaskModel(
-        name=task_name, parent_task_id=parent_task_id, create_by=create_by, id=task_id
+        name=task_name,
+        parent_task_id=parent_task_id,
+        create_by=create_by,
+        id=task_id,
+        order=order,
     )
     session.add(new_task_data)
 
@@ -51,19 +71,17 @@ def tree_task(
     user_id: Optional[UUID] = None,
 ) -> dict:
     logger.info("task id:%s", task_id)
-    if task_id:
 
+    if task_id:
         root_task = session.query(TaskModel).filter(TaskModel.id == task_id).first()
-        task_tree = root_task.__dict__
-        task_tree["child_task"] = list_child_task(task_id=task_id)
-        return task_tree
     else:
         root_task = (
             session.query(TaskModel).filter(TaskModel.parent_task_id == None).first()
         )
-        task_tree = root_task.__dict__
-        task_tree["child_task"] = list_child_task(task_id=root_task.id)
-        return task_tree
+    task_tree = root_task.__dict__
+    task_tree["child_task"] = list_child_task(task_id=root_task.id)
+    logger.info("task_tree:%s", task_tree)
+    return task_tree
 
 
 @with_session
@@ -81,6 +99,7 @@ def list_child_task(
             tmp_child_task_list["child_task"] = list_child_task(
                 task_id=tmp_child_task.id
             )
+            tmp_child_task_list["parent_task_id"] = task_id
         else:
             pass
         child_task_list.append(tmp_child_task_list)
@@ -90,7 +109,16 @@ def list_child_task(
 @with_session
 def delete_task(session: Session, task_id: UUID) -> bool:
     tmp_task_data = session.query(TaskModel).filter(TaskModel.id == task_id).first()
+    tmp_task_list = (
+        session.query(TaskModel)
+        .filter(TaskModel.parent_task_id == tmp_task_data.parent_task_id)
+        .order_by(TaskModel.order)
+        .all()
+    )
 
+    for tmp_task in tmp_task_list:
+        if tmp_task.order > tmp_task_data.order:
+            tmp_task.order -= 1
     session.delete(tmp_task_data)
 
     return True
@@ -116,12 +144,17 @@ def update_task(
     task_id: UUID,
     task_name: Optional[str] = None,
     parent_task_id: Optional[UUID] = None,
+    order: Optional[int] = None,
 ) -> bool:
     tmp_task_data = session.query(TaskModel).filter(TaskModel.id == task_id).first()
     if task_name:
         tmp_task_data.name = task_name
     if parent_task_id:
         tmp_task_data.parent_task_id = parent_task_id
+
+
+    # print("update info: %s", tmp_task_data.__dict__)
+    # return True
 
     # work
     ret_dict = {}
@@ -136,6 +169,7 @@ def update_task(
             ret_dict[key] = trans_datetime2str(val)
         ret_dict[key] = val
     return ret_dict
+
 
     # return tmp_task_data.__dict__
 
