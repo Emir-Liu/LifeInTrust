@@ -2,6 +2,8 @@
 
 from uuid import UUID, uuid4
 from typing import Optional, List
+from datetime import datetime
+from copy import deepcopy
 
 from sqlalchemy.orm import Session
 
@@ -94,6 +96,20 @@ def delete_task(session: Session, task_id: UUID) -> bool:
     return True
 
 
+def trans_datetime2str(time: datetime):
+    """将datetime格式数据转换为str格式数据
+
+    Args:
+        time (datetime): datetime格式数据
+    """
+
+    if isinstance(time, str):
+        return time
+    elif isinstance(time, datetime):
+        formatted_date = time.strftime("%Y-%m-%d %H:%M:%S")
+        return formatted_date
+
+
 @with_session
 def update_task(
     session: Session,
@@ -107,9 +123,23 @@ def update_task(
     if parent_task_id:
         tmp_task_data.parent_task_id = parent_task_id
 
-    return tmp_task_data.__dict__
+    # work
+    ret_dict = {}
 
+    for key, val in deepcopy(tmp_task_data.__dict__).items():
+        logger.info("key: %s val: %s type: %s", key, val, type(val))
+        if "_" in key:
+            continue
+        elif isinstance(val, UUID):
+            ret_dict[key] = str(val)
+        elif isinstance(val, datetime):
+            ret_dict[key] = trans_datetime2str(val)
+        ret_dict[key] = val
+    return ret_dict
 
+    # return tmp_task_data.__dict__
+
+# home
 @with_session
 def add_task_root(
     session: Session,

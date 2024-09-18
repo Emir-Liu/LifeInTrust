@@ -1,8 +1,10 @@
 """database model to manage task"""
 
+
 import enum
 
 from sqlalchemy import Column, String, ForeignKey, Integer, Enum
+
 from sqlalchemy.dialects.postgresql import UUID
 
 from .base_model import BaseModel
