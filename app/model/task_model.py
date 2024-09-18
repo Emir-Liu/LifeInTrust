@@ -1,10 +1,25 @@
 """database model to manage task"""
 
-from sqlalchemy import Column, String, ForeignKey, Integer
+
+import enum
+
+from sqlalchemy import Column, String, ForeignKey, Integer, Enum
+
 from sqlalchemy.dialects.postgresql import UUID
 
 from .base_model import BaseModel
 from .connector import Base
+
+
+class RelationType(enum.Enum):
+    """get relation type
+
+    Args:
+        enum (_type_): enum type
+    """
+
+    COMPOSE = "组成"
+    PREREQUISITES = "前提"
 
 
 class TaskModel(BaseModel, Base):
@@ -24,5 +39,7 @@ class TaskModel(BaseModel, Base):
         default=None,
         comment="parent task id",
     )
+
+    relation_type = Column(Enum(), comment="relations between the task and parent task")
 
     order = Column(Integer(), default=0, comment="task order start from 0")
